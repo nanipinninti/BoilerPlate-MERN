@@ -3,6 +3,7 @@ import { useEffect,useState } from "react";
 // Popups
 import { AuthPopup } from "./auth.popup";
 import { SearchPopup } from "./search.popup";
+import { NotificationPopup } from "./notification.popup";
 
 // Context
 import { useTheme } from "../../contexts/Theme/ThemeContext";
@@ -25,7 +26,8 @@ export default function Header() {
   // States to manage Popups
   const [showAuthPopup,setShowAuthPopup] = useState<boolean>(false);
   const [authMode,setAuthMode] = useState<"signin"|"signup">("signin")  
-  const [showSearchPopup,setShowSearchPopup] = useState<boolean>(true);
+  const [showSearchPopup,setShowSearchPopup] = useState<boolean>(false);
+  const [showNotificationPopup,setShowNotificationPopup] = useState<boolean>(true);
 
   // Handle key board presses
   const handleKeyPress = (e: KeyboardEvent) => {
@@ -36,6 +38,7 @@ export default function Header() {
     if  (e.key === "Escape"){
       setShowSearchPopup(false);
       setShowAuthPopup(false);
+      setShowNotificationPopup(false)
     }
   };
   
@@ -152,6 +155,7 @@ export default function Header() {
                 ? "border-[#D1D5DC]"
                 : "border-gray-700 bg-gray-800"
             }`}
+            onClick={()=>{setShowNotificationPopup(true)}}
             >
                   <IoMdNotificationsOutline
                     className={`text-lg ${
@@ -180,6 +184,7 @@ export default function Header() {
       {/* Popups */}
       {showAuthPopup&&<AuthPopup MODE={authMode} closePopup={()=>{setShowAuthPopup(false)}}/>}
       {showSearchPopup&&<SearchPopup closePopup={()=>{setShowSearchPopup(false)}}/>}
+      {showNotificationPopup&&<NotificationPopup closePopup={()=>{setShowNotificationPopup(false)}}/>}
     </div>
   );
 }
