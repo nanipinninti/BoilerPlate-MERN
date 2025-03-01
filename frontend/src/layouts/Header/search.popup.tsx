@@ -23,7 +23,7 @@ export const SearchPopup:React.FC<SearchPopupProps> = ({closePopup})=>{
                 animate={{ opacity: 1, y: 0 }}   // End position (center)
                 exit={{ opacity: 0, y: -100 }}   // When closing (back to the top)
                 transition={{ duration: 0.4, ease: "easeOut" }} 
-                className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-11/12 mx-auto max-w-[500px] rounded-lg z-20 bg-white rounded"
+                className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-screen h-full sm:h-auto mx-auto max-w-[500px] sm:rounded-lg z-20 bg-white rounded"
                 onClick={(e) => e.stopPropagation()} 
             >
                 <SearchComponent closePopup={closePopup}/>

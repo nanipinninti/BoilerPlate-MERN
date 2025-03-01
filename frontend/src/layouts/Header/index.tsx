@@ -26,8 +26,8 @@ export default function Header() {
   // States to manage Popups
   const [showAuthPopup,setShowAuthPopup] = useState<boolean>(false);
   const [authMode,setAuthMode] = useState<"signin"|"signup">("signin")  
-  const [showSearchPopup,setShowSearchPopup] = useState<boolean>(false);
-  const [showNotificationPopup,setShowNotificationPopup] = useState<boolean>(true);
+  const [showSearchPopup,setShowSearchPopup] = useState<boolean>(true);
+  const [showNotificationPopup,setShowNotificationPopup] = useState<boolean>(false);
 
   // Handle key board presses
   const handleKeyPress = (e: KeyboardEvent) => {

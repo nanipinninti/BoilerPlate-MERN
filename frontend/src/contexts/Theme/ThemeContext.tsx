@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
+import Cookies from "js-cookie";
 
 type ThemeMode = "light" | "dark";
 
@@ -16,18 +17,20 @@ interface ThemeProviderProps {
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     const [theme, setTheme] = useState<ThemeMode>(() => {
         // Retrieve the theme from localStorage, default to "light" if not found
-        const savedTheme = localStorage.getItem("theme") as ThemeMode | null;
-        return savedTheme || "light";
+        const deviceTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+        const savedTheme = Cookies.get("theme") as ThemeMode | null;
+        return savedTheme || deviceTheme || "light";
     });
 
-    useEffect(() => {
-        // Save the theme to localStorage whenever it changes
-        localStorage.setItem("theme", theme);
-    }, [theme]);
 
     const toggleTheme = () => {
-        setTheme((previousTheme) => (previousTheme === "light" ? "dark" : "light"));
+        setTheme((previousTheme) => {
+            const newTheme = previousTheme === "light" ? "dark" : "light";
+            Cookies.set("theme", newTheme, { expires: 1 }); // Store new theme in cookies
+            return newTheme;
+        });
     };
+    
 
     const value: ThemeContextType = { theme, toggleTheme };
 

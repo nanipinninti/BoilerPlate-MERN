@@ -1,0 +1,39 @@
+instagram-backend/
+├── .env                  # Environment variables
+├── .gitignore            # Git ignore file
+├── package.json          # Node.js dependencies and scripts
+├── package-lock.json     # Lock file for dependencies
+├── README.md             # Project documentation
+├── src/                  # Source code
+│   ├── api/              # API routes and controllers
+│   │   ├── v1/           # Version 1 of the API
+│   │   │   ├── controllers/  # Route handlers
+│   │   │   ├── middleware/   # Custom middleware
+│   │   │   ├── routes/       # Route definitions
+│   │   │   └── validators/   # Request validation
+│   │   └── v2/           # Version 2 of the API (future-proofing)
+│   ├── config/           # Configuration files (DB, AWS, etc.)
+│   │   ├── db.js         # Database connection
+│   │   ├── aws.js        # AWS S3 configuration
+│   │   └── constants.js  # Application constants
+│   ├── jobs/             # Background jobs (e.g., using Bull or Agenda)
+│   ├── loaders/          # Application startup scripts
+│   │   ├── express.js    # Express app setup
+│   │   ├── mongoose.js   # MongoDB connection
+│   │   └── redis.js      # Redis connection
+│   ├── models/           # Database models (e.g., Mongoose schemas)
+│   ├── services/         # Business logic (e.g., user service, post service)
+│   ├── utils/            # Utility functions (e.g., helpers, validators)
+│   ├── subscribers/      # Event subscribers (e.g., for Redis pub/sub)
+│   ├── types/            # TypeScript types (if using TypeScript)
+│   ├── app.js            # Main application file
+│   └── server.js         # Server entry point
+├── tests/                # Test files
+│   ├── unit/             # Unit tests
+│   ├── integration/      # Integration tests
+│   └── load/             # Load testing scripts
+├── scripts/              # Utility scripts (e.g., DB migrations)
+├── docs/                 # API documentation (e.g., Swagger)
+├── logs/                 # Application logs
+├── public/               # Static files (e.g., images, CSS)
+└── Dockerfile            # Docker configuration
